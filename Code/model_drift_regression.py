@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
 import sys
 import cvxpy as cp
 import logging
@@ -11,8 +10,7 @@ import numpy as np
 np.random.seed(42)
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_boston
 

@@ -17,9 +17,12 @@ from ceml.sklearn import generate_counterfactual
 from utils import plot_feature_diff
 
 
+
 if __name__ == "__main__":
+    regularization = False
+
     # Load data
-    data = np.load("data.npz")
+    data = np.load("credit_data.npz")
     X, y, features_desc = data["X"], data["y"], data["features_desc"]
     #print(features_desc)
     """
@@ -90,10 +93,11 @@ if __name__ == "__main__":
     X1_addon = np.array(X1_addon)
     y1_addon = np.array(y1_addon)
 
-    #X0_train = np.concatenate((X0_train, X0_addon)) # Uncomment these lines to get the origina behaviour that asking for more money leads to an accept rather than a reject!
-    #y0_train = np.concatenate((y0_train, y0_addon))
-    #X1_train = np.concatenate((X1_train, X1_addon))
-    #y1_train = np.concatenate((y1_train, y1_addon))
+    if regularization is True:
+        X0_train = np.concatenate((X0_train, X0_addon)) # Uncomment these lines to get the original behavior that asking for more money leads to an accept rather than a reject!
+        y0_train = np.concatenate((y0_train, y0_addon))
+        X1_train = np.concatenate((X1_train, X1_addon))
+        y1_train = np.concatenate((y1_train, y1_addon))
 
     # Create final sets
     Xcftest = np.concatenate((X0_test, X1_test))

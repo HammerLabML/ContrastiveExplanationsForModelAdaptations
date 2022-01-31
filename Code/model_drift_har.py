@@ -12,13 +12,6 @@ import random
 random.seed(4242)
 np.random.seed(4242)
 
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.gaussian_process import GaussianProcessClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.gaussian_process.kernels import RBF, WhiteKernel, Matern
-from sklearn.neural_network import MLPClassifier
-from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
@@ -134,7 +127,7 @@ if __name__ == "__main__":
         gradB = compute_cf_gradient(model, x, y_target)
         score = compare_cf_gradients(gradA, gradB)
 
-        cftest_scores.append(score))
+        cftest_scores.append(score)
     cftest_scores_sorting = np.argsort(cftest_scores)
 
     # Compute counterfactuals under old and new model
@@ -143,8 +136,8 @@ if __name__ == "__main__":
 
     cf_new = []
     cf_old = []
-    #for i in range(Xcftest.shape[0]):
-    for i in cftest_scores_sorting[500:]:
+    for i in range(Xcftest.shape[0]):
+    #for i in cftest_scores_sorting[500:]:
         x = Xcftest[i,:]
         y = ycftest[i]
         y_target = 0 if y == 1 else 1

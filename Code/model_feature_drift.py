@@ -6,7 +6,6 @@ import numpy as np
 np.random.seed(42)
 import cvxpy as cp
 from numpy.random import multivariate_normal
-from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 from copy import deepcopy
@@ -67,6 +66,7 @@ if __name__ == "__main__":
     # Find interesting samples
     cftest_scores = []
     for i in range(Xcftest.shape[0]):   # Only consider samples from a hold out set of samples
+    #for i in cftest_scores_sorting[:10]:
         x = Xcftest[i,:]
         y_target = 0 if ycftest[i] == 1 else 1
 
@@ -84,6 +84,7 @@ if __name__ == "__main__":
     cf_new = []
     cf_old = []
     for i in range(Xcftest.shape[0]):
+    #for i in cftest_scores_sorting[:10]:
         x = Xcftest[i,:]
         y = ycftest[i]
         y_target = 0 if y == 1 else 1
